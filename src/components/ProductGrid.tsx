@@ -16,8 +16,7 @@ function ProductGrid({ products }: { products: any[] }) {
         {products.map((product) => (
           <a key={product.id} href={product.href} className="group">
             <div className=" aspect-square w-full overflow-hidden rounded-lg bg-gray-200">
-              <img src={product.imageSrc} className="h-full w-full object-cover object-center group-hover:opacity-75"/>
-              {/*<Imgix
+              <Imgix
                 src={product.imageSrc}
                 htmlAttributes={{ alt: product.imageAlt }}
                 width={400}
@@ -32,7 +31,7 @@ function ProductGrid({ products }: { products: any[] }) {
                   //'bg-replace': 'christmas',
                   ...product.params
                 }}
-              />*/}
+              />
             </div>
             <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
             <p className="mt-1 text-lg font-medium text-gray-900">
