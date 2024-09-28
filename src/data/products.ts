@@ -31,7 +31,7 @@ export const products = [
     price: '$459',
     color: 'Black',
     params: {
-      //rect: "400,50,1700,1000"
+      rect: "400,50,1700,1000"
     }
   },
   {
