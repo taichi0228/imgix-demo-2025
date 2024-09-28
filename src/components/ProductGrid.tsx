@@ -24,9 +24,9 @@ function ProductGrid({ products }: { products: any[] }) {
                 className="h-full w-full object-cover object-center group-hover:opacity-75"
                 //if you add parameters, they will be applied to all images// 
                 imgixParams={{
-                  //auto: 'format,compress', // serve next gen image format with best compression method
-                  //fit: 'crop',
-                  //crop: 'faces,edges',
+                  auto: 'format,compress', // serve next gen image format with best compression method
+                  fit: 'crop',
+                  crop: 'faces,edges',
                   //'bg-remove': true,
                   //'bg-replace': 'christmas',
                   ...product.params
