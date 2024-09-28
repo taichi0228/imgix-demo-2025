@@ -30,7 +30,9 @@ export const products = [
     imageSrc: 'https://sdk-test.imgix.net/canon-camera.jpg',
     price: '$459',
     color: 'Black',
-    params: {}
+    params: {
+      //rect: "400,50,1700,1000"
+    }
   },
   {
     id: 8,
