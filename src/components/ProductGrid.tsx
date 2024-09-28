@@ -27,7 +27,7 @@ function ProductGrid({ products }: { products: any[] }) {
                   auto: 'format,compress', // serve next gen image format with best compression method
                   fit: 'crop',
                   crop: 'faces,edges',
-                  //'bg-remove': true,
+                  'bg-remove': true,
                   //'bg-replace': 'christmas',
                   ...product.params
                 }}
