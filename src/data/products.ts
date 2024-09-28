@@ -69,7 +69,7 @@ export const products = [
     color: 'Black',
     params: {
       fit: 'facearea',
-      facepad: 3.5
+      facepad: 3.5,
     }
   },
   {
