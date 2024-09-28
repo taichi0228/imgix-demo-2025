@@ -68,8 +68,8 @@ export const products = [
     price: '$150',
     color: 'Black',
     params: {
-      //fit: 'facearea',
-      //facepad: 3.5
+      fit: 'facearea',
+      facepad: 3.5
     }
   },
   {
@@ -80,8 +80,8 @@ export const products = [
     price: '$335',
     color: 'Black',
     params: {
-      //fit: 'facearea',
-      //facepad: 3.5
+      fit: 'facearea',
+      facepad: 3.5
     }
   },
   // Sneakers
