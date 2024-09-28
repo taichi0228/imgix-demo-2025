@@ -130,7 +130,7 @@ export const products = [
     price: '$355',
     color: 'Brown',
     params: {
-        upscale: true
+        //upscale: true
     }
   },
   {
@@ -141,7 +141,7 @@ export const products = [
     price: '$635',
     color: 'Grey',
     params: {
-        upscale: true
+        //upscale: true
     }
   },
   {
@@ -152,7 +152,7 @@ export const products = [
     price: '$635',
     color: 'Black',
     params: {
-        upscale: true
+        //upscale: true
     }
   },
   {
@@ -163,7 +163,7 @@ export const products = [
     price: '$335',
     color: 'Purple',
     params: {
-        upscale: true,
+        //upscale: true,
         crop:'center'
     }
   }
