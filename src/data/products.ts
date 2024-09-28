@@ -92,10 +92,15 @@ export const products = [
     name: 'Basic Sneaker',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/sneaker-medium.jpg',
-    imageAlt: "Side of men's black sneaker on blue background",
+    imageAlt: "Side of men's sneaker on outdoor background",
     price: '$135',
     color: 'Black',
-    params: {}
+    params: {
+      crop: 'focalpoint',
+      'fp-x': 0.5,
+      'fp-y': 0.4,
+      'fp-z': 1.5
+    }
   },
   {
     id: 2,
