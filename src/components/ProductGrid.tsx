@@ -16,7 +16,8 @@ function ProductGrid({ products }: { products: any[] }) {
         {products.map((product) => (
           <a key={product.id} href={product.href} className="group">
             <div className=" aspect-square w-full overflow-hidden rounded-lg bg-gray-200">
-              <Imgix
+              <img src={product.imageSrc} width={400} height={400} className="h-full w-full object-cover object-center group-hover:opacity-75"></img>
+              { /* <Imgix
                 src={product.imageSrc}
                 htmlAttributes={{ alt: product.imageAlt }}
                 width={400}
@@ -24,14 +25,15 @@ function ProductGrid({ products }: { products: any[] }) {
                 className="h-full w-full object-cover object-center group-hover:opacity-75"
                 //if you add parameters, they will be applied to all images// 
                 imgixParams={{
-                  auto: 'format,compress', // serve next gen image format with best compression method
-                  fit: 'crop',
-                  crop: 'faces,edges',
+                  //auto: 'format,compress', // serve next gen image format with best compression method
+                  //fit: 'crop',
+                  //crop: 'faces,edges',
                   //'bg-remove': true,
-                  'bg-replace': 'christmas',
+                  //'bg-replace': 'christmas',
+                  //mark: 'https://assets.imgix.net/presskit/imgix-presskit.pdf?w=160&fm=png&page=4',
                   ...product.params
                 }}
-              />
+              /> */ }
             </div>
             <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
             <p className="mt-1 text-lg font-medium text-gray-900">

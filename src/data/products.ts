@@ -8,10 +8,10 @@ export const products = [
     price: '$200',
     color: 'Black',
     params: {
-      crop: 'focalpoint',
-      'fp-x': 0.5,
-      'fp-y': 0.65,
-      'fp-z': 1.5
+      // crop: 'focalpoint',
+      //'fp-x': 0.5,
+      //'fp-y': 0.65,
+      //'fp-z': 1.5
     }
   },
   {
@@ -30,9 +30,7 @@ export const products = [
     imageSrc: 'https://sdk-test.imgix.net/canon-camera.jpg',
     price: '$459',
     color: 'Black',
-    params: {
-      rect: "400,50,1700,1000"
-    }
+    params: {}
   },
   {
     id: 8,
@@ -70,8 +68,8 @@ export const products = [
     price: '$150',
     color: 'Black',
     params: {
-      fit: 'facearea',
-      facepad: 3.5,
+      //fit: 'facearea',
+      //facepad: 3.5
     }
   },
   {
@@ -82,8 +80,8 @@ export const products = [
     price: '$335',
     color: 'Black',
     params: {
-      fit: 'facearea',
-      facepad: 3.5
+      //fit: 'facearea',
+      //facepad: 3.5
     }
   },
   // Sneakers
@@ -92,15 +90,10 @@ export const products = [
     name: 'Basic Sneaker',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/sneaker-medium.jpg',
-    imageAlt: "Side of men's sneaker on outdoor background",
+    imageAlt: "Side of men's black sneaker on blue background",
     price: '$135',
     color: 'Black',
-    params: {
-      crop: 'focalpoint',
-      'fp-x': 0.5,
-      'fp-y': 0.4,
-      'fp-z': 1.5
-    }
+    params: {}
   },
   {
     id: 2,
