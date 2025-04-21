@@ -1,49 +1,78 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-import Imgix from 'react-imgix'
+import Imgix from 'react-imgix';
 
-function ProductGrid({ products }: { products: any[] }) {
+interface Product {
+  id: number | string;
+  name: string;
+  href: string;
+  imageSrc: string;
+  imageAlt?: string;
+  price: string;
+  params?: { [key: string]: any };
+}
+
+interface ProductGridProps {
+  products: Product[];
+  // heroGenFillEnabled プロパティはここでは使用しない前提（ヒーロー画像は App.tsx で管理）
+  heroGenFillEnabled?: boolean;
+}
+
+// 通常の商品画像用の既定パラメーター（変更はせずそのまま残します）
+const defaultProductParams = {
+  auto: 'format,compress',
+  fit: 'crop',
+  crop: 'faces,edges',
+  //'bg-remove': true,
+  //'bg' : '49c6dd',
+  'bg-replace':'christmas',
+  //mark: 'https://jpblogtzk.imgix.net/imgix-logo.png?w=300',
+  // 他に必要なパラメーターがあればここに追加
+};
+
+function ProductGrid({ products }: ProductGridProps) {
   return (
+    // セクション全体の背景をダークに設定
     <section
       aria-labelledby="products-heading"
-      className="mx-auto max-w-2xl px-4 pb-16 pt-12 sm:px-6 sm:pb-24 sm:pt-16 lg:max-w-7xl lg:px-8"
+      className="bg-gray-900 py-12"
     >
       <h2 id="products-heading" className="sr-only">
         Products
       </h2>
-
-      <div className="grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 xl:gap-x-8">
-        {products.map((product) => (
-          <a key={product.id} href={product.href} className="group">
-            <div className=" aspect-square w-full overflow-hidden rounded-lg bg-gray-200">
-              <img src={product.imageSrc} width={400} height={400} className="h-full w-full object-cover object-center group-hover:opacity-75"></img>
-              { /* <Imgix
-                src={product.imageSrc}
-                htmlAttributes={{ alt: product.imageAlt }}
-                width={400}
-                height={400}
-                className="h-full w-full object-cover object-center group-hover:opacity-75"
-                //if you add parameters, they will be applied to all images// 
-                imgixParams={{
-                  //auto: 'format,compress', // serve next gen image format with best compression method
-                  //fit: 'crop',
-                  //crop: 'faces,edges',
-                  //'bg-remove': true,
-                  //'bg-replace': 'christmas',
-                  //mark: 'https://assets.imgix.net/presskit/imgix-presskit.pdf?w=160&fm=png&page=4',
-                  ...product.params
-                }}
-              /> */ }
-            </div>
-            <h3 className="mt-4 text-sm text-gray-700">{product.name}</h3>
-            <p className="mt-1 text-lg font-medium text-gray-900">
-              {product.price}
-            </p>
-          </a>
-        ))}
+      <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+        {/* グリッドレイアウト */}
+        <div className="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
+          {products.map((product, index) => {
+            // 各商品の個別パラメーターと既定パラメーターをマージ
+            const finalParams = { ...defaultProductParams, ...product.params };
+            return (
+              <a
+                key={`${product.id}-${index}`}
+                href={product.href}
+                className="group block"
+              >
+                <div className="aspect-square overflow-hidden rounded-lg bg-gray-800 shadow-lg transition-transform transform group-hover:scale-105">
+                  <Imgix
+                    src={product.imageSrc}
+                    htmlAttributes={{ alt: product.imageAlt || product.name }}
+                    width={400}
+                    height={400}
+                    className="w-full h-full object-cover object-center"
+                    imgixParams={finalParams}
+                  />
+                </div>
+                <h3 className="mt-4 text-lg font-semibold text-white">
+                  {product.name}
+                </h3>
+                <p className="mt-1 text-sm text-gray-300">
+                  {product.price}
+                </p>
+              </a>
+            );
+          })}
+        </div>
       </div>
     </section>
-  )
+  );
 }
 
-export default ProductGrid
+export default ProductGrid;

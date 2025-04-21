@@ -1,4 +1,23 @@
 export const products = [
+  // ヒーロー画像用オブジェクト（新規追加）
+  {
+    id: 'hero-1', // ユニークなID
+    name: 'Hero Image',
+    href: '#',
+    imageSrc: 'https://jpblogtzk.imgix.net/pexels-walid-ahmad-1372014.jpg',
+    imageAlt: 'Hero Image with Generative Fill',
+    price: '', // ヒーロー画像は価格不要なら空文字
+    isHero: true,
+    params: {
+      // generative fill 用のパラメーター（ProductGrid 内でトグルにより使用されます）
+      // ここでは幅や高さも Imgix 側で生成する画像サイズの目安として設定できます
+      width: '5000',
+      height: '1500',
+      //fit: 'fill',
+      //fill: 'gen',
+      fillGenPrompt: 'Extend the background elegantly'
+    }
+  },
   // Cameras
   {
     id: 5,
@@ -8,20 +27,25 @@ export const products = [
     price: '$200',
     color: 'Black',
     params: {
-      // crop: 'focalpoint',
-      //'fp-x': 0.5,
-      //'fp-y': 0.65,
-      //'fp-z': 1.5
+      crop: 'focalpoint',
+      'fp-x': 0.5,
+      'fp-y': 0.65,
+      'fp-z': 1.5
     }
   },
   {
     id: 6,
     name: 'Fujifilm Camera',
     href: '#',
-    imageSrc: 'https://sdk-test.imgix.net/fujifilm-camera.jpg',
-    price: '$351',
+    imageSrc: 'https://jpblogtzk.imgix.net/pexels-pixabay-247304.jpg',
+    price: '$priceless',
     color: 'Black',
-    params: {}
+    params: {
+      crop: 'center',
+      //'object-removal-rect':'1029%2C493%2C1097%2C1127',
+      //'object-removal-rect':'1061%2C388%2C1270%2C1236',
+      //'object-removal-prompt':'cherry%20blossom%20trees',
+    }
   },
   {
     id: 7,
@@ -30,7 +54,9 @@ export const products = [
     imageSrc: 'https://sdk-test.imgix.net/canon-camera.jpg',
     price: '$459',
     color: 'Black',
-    params: {}
+    params: {
+      crop: 'center'
+    }
   },
   {
     id: 8,
@@ -39,7 +65,9 @@ export const products = [
     imageSrc: 'https://sdk-test.imgix.net/rolleiflex-camera.jpg',
     price: '$212',
     color: 'Black',
-    params: {}
+    params: {
+      crop: 'center'
+    }
   },
   // Hats
   {
@@ -64,39 +92,33 @@ export const products = [
     id: 14,
     name: 'Wicker Hat',
     href: '#',
-    imageSrc: 'https://sdk-test.imgix.net/wicker-hat.jpg',
+    imageSrc: 'https://sdk-test.imgix.net/fellipe-ditadi-dEU1q5s7GPY-unsplash.jpg',
     price: '$150',
     color: 'Black',
-    params: {
-      //fit: 'facearea',
-      //facepad: 3.5
-    }
+    params: {}
   },
   {
-    id: 14,
+    id: 'hat-1',
     name: 'Bucket Hat',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/bucket-hat.jpg',
     price: '$335',
     color: 'Black',
-    params: {
-      //fit: 'facearea',
-      //facepad: 3.5
-    }
+    params: {}
   },
   // Sneakers
   {
-    id: 1,
+    id: 'sneaker-1',
     name: 'Basic Sneaker',
     href: '#',
-    imageSrc: 'https://sdk-test.imgix.net/sneaker-medium.jpg',
+    imageSrc: 'https://sdk-test.imgix.net/xavier-teo-SxAXphIPWeg-unsplash.jpg',
     imageAlt: "Side of men's black sneaker on blue background",
     price: '$135',
     color: 'Black',
     params: {}
   },
   {
-    id: 2,
+    id: 'sneaker-2',
     name: 'Pink Sneaker',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/red-and-white-sneaker.jpg',
@@ -105,7 +127,7 @@ export const products = [
     params: {}
   },
   {
-    id: 3,
+    id: 'sneaker-3',
     name: 'Basic Running Shoe',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/sneaker-large.jpg',
@@ -114,7 +136,7 @@ export const products = [
     params: {}
   },
   {
-    id: 4,
+    id: 'sneaker-4',
     name: 'Red Running Shoe',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/tennis-sneaker.jpg',
@@ -123,48 +145,39 @@ export const products = [
     params: {}
   },
   {
-    id: 14,
+    id: 'purse-1',
     name: 'Brown Purse',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/brown-chain-purse.jpg',
     price: '$355',
     color: 'Brown',
-    params: {
-        upscale: true
-    }
+    params: { upscale: true }
   },
   {
-    id: 14,
+    id: 'purse-2',
     name: 'Grey Purse',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/grey-pruse.jpg',
     price: '$635',
     color: 'Grey',
-    params: {
-        upscale: true
-    }
+    params: { upscale: true }
   },
   {
-    id: 14,
+    id: 'purse-3',
     name: 'Black Purse',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/black-purse.jpg',
     price: '$635',
     color: 'Black',
-    params: {
-        upscale: true
-    }
+    params: { upscale: true }
   },
   {
-    id: 14,
+    id: 'purse-4',
     name: 'Purple Purse',
     href: '#',
     imageSrc: 'https://sdk-test.imgix.net/purple-purse.jpg',
     price: '$335',
     color: 'Purple',
-    params: {
-        upscale: true,
-        crop:'center'
-    }
+    params: { upscale: true, crop: 'center' }
   }
-]
+];
