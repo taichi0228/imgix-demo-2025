@@ -16,8 +16,10 @@ interface Product {
 
 interface ProductGridProps {
   products: Product[];
-  // heroGenFillEnabled プロパティはここでは使用しない前提（ヒーロー画像は App.tsx で管理）
-  heroGenFillEnabled?: boolean;
+  // Hero image parameters
+  heroParams?: any;
+  heroOriginalCode?: string;
+  onHeroParamsChange?: (params: any) => void;
 }
 
 // Original code as a string to preserve comments and formatting
@@ -36,7 +38,12 @@ const defaultProductParams = {
   auto: 'format,compress'
 };
 
-function ProductGrid({ products }: ProductGridProps) {
+function ProductGrid({ 
+  products, 
+  heroParams, 
+  heroOriginalCode,
+  onHeroParamsChange 
+}: ProductGridProps) {
   const [imgixParams, setImgixParams] = useState(defaultProductParams);
   const { language } = useLanguage();
 
@@ -67,6 +74,9 @@ function ProductGrid({ products }: ProductGridProps) {
           defaultParams={defaultProductParams}
           originalCode={originalParamsCode}
           onParamsChange={handleParamsChange}
+          heroParams={heroParams}
+          heroOriginalCode={heroOriginalCode}
+          onHeroParamsChange={onHeroParamsChange}
         />
         
         {/* グリッドレイアウト */}

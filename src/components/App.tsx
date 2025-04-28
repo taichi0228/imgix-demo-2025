@@ -11,6 +11,7 @@ import { useLanguage } from '../context/LanguageContext';
 import LanguageToggle from './LanguageToggle';
 import Imgix from 'react-imgix';
 import { products } from '../data/products';
+import { heroParamsCode } from '../data/heroParamsCode';
 import ProductGrid from './ProductGrid';
 
 const navigation = {
@@ -40,6 +41,12 @@ export default function Example() {
 
   // ヒーロー画像用商品を抽出
   const heroProduct = products.find((product) => product.isHero);
+  const [heroImgixParams, setHeroImgixParams] = useState(heroProduct?.params || {
+    auto: 'format,compress',
+    fit: 'fill',
+    fill: 'gen',
+  });
+
   // 通常の商品だけ
   const regularProducts = products.filter((product) => !product.isHero);
 
@@ -243,12 +250,7 @@ export default function Example() {
                 height={600}         // 生成する画像の高さ
                 alt={heroProduct.imageAlt || heroProduct.name}
                 className="w-full h-full object-cover" 
-                imgixParams={{
-                  auto: 'format,compress',
-                  fit: 'fill',
-                  fill: 'gen',
-                  ...heroProduct.params,
-                }}
+                imgixParams={heroImgixParams}
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
                 <h1 className="text-4xl text-white font-bold">
@@ -278,7 +280,12 @@ export default function Example() {
 
         {/* Product Grid */}
         <section>
-          <ProductGrid products={regularProducts} />
+          <ProductGrid 
+            products={regularProducts} 
+            heroParams={heroImgixParams}
+            heroOriginalCode={heroParamsCode}
+            onHeroParamsChange={setHeroImgixParams}
+          />
         </section>
       </main>
 

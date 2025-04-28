@@ -83,6 +83,8 @@ const translations: Translations = {
     ja: '変更はすべての商品画像に即座に適用されます' 
   },
   'language_toggle': { en: 'Japanese', ja: 'English' },
+  'product_parameters': { en: 'Product Parameters', ja: '商品パラメータ' },
+  'hero_parameters': { en: 'Hero Image Parameters', ja: 'ヒーロー画像パラメータ' },
 };
 
 // Provider component

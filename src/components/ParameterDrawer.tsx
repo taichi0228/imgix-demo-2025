@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { AdjustmentsHorizontalIcon, XMarkIcon } from '@heroicons/react/24/outline';
 import ImageParamsEditor from './ImageParamsEditor';
+import HeroParamsEditor from './HeroParamsEditor';
 import { useLanguage } from '../context/LanguageContext';
 
 interface ImgixParams {
@@ -11,9 +12,19 @@ interface ParameterDrawerProps {
   defaultParams: any;
   originalCode: string;
   onParamsChange: (params: any) => void;
+  heroParams?: any;
+  heroOriginalCode?: string;
+  onHeroParamsChange?: (params: any) => void;
 }
 
-function ParameterDrawer({ defaultParams, originalCode, onParamsChange }: ParameterDrawerProps) {
+function ParameterDrawer({ 
+  defaultParams, 
+  originalCode, 
+  onParamsChange,
+  heroParams,
+  heroOriginalCode,
+  onHeroParamsChange
+}: ParameterDrawerProps) {
   const [isOpen, setIsOpen] = useState(false);
   const { t } = useLanguage();
 
@@ -56,7 +67,18 @@ function ParameterDrawer({ defaultParams, originalCode, onParamsChange }: Parame
         } overflow-y-auto`}
       >
         <div className="p-6">
-          <h2 className="text-xl font-bold text-white mb-4">{t('image_parameters')}</h2>
+          <h2 className="text-xl font-bold text-white mb-2">{t('image_parameters')}</h2>
+          <p className="text-gray-300 text-sm mb-6">
+            {t('editor_intro')}
+          </p>
+          
+          {heroParams && heroOriginalCode && onHeroParamsChange && (
+            <HeroParamsEditor
+              defaultParams={heroParams}
+              originalCode={heroOriginalCode}
+              onParamsChange={onHeroParamsChange}
+            />
+          )}
           
           <ImageParamsEditor
             defaultParams={defaultParams}

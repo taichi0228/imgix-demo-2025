@@ -5,13 +5,13 @@ interface ImgixParams {
   [key: string]: any;
 }
 
-interface ImageParamsEditorProps {
+interface HeroParamsEditorProps {
   defaultParams: any;
   originalCode: string;
   onParamsChange: (params: any) => void;
 }
 
-function ImageParamsEditor({ defaultParams, originalCode, onParamsChange }: ImageParamsEditorProps) {
+function HeroParamsEditor({ defaultParams, originalCode, onParamsChange }: HeroParamsEditorProps) {
   const [editorContent, setEditorContent] = useState<string>(originalCode);
   const [error, setError] = useState<string | null>(null);
   const editorRef = useRef<HTMLDivElement>(null);
@@ -103,15 +103,15 @@ function ImageParamsEditor({ defaultParams, originalCode, onParamsChange }: Imag
   };
 
   return (
-    <div className="bg-gray-800 p-4 rounded-lg">
+    <div className="bg-gray-800 p-4 rounded-lg mb-6">      
       <h4 className="text-white font-medium mb-2 border-b border-gray-700 pb-1">
-        {t ? t('product_parameters') : 'Product Parameters'}
+        {t ? t('hero_parameters') : 'Hero Image Parameters'}
       </h4>
       
       <div className="relative">
         {/* Hidden textarea that captures user input */}
         <textarea
-          className="w-full h-80 bg-transparent text-transparent caret-white p-3 font-mono text-sm rounded absolute inset-0 z-10 resize-none"
+          className="w-full h-60 bg-transparent text-transparent caret-white p-3 font-mono text-sm rounded absolute inset-0 z-10 resize-none"
           value={editorContent}
           onChange={handleChange}
           onScroll={handleScroll}
@@ -120,24 +120,15 @@ function ImageParamsEditor({ defaultParams, originalCode, onParamsChange }: Imag
         {/* Highlighted display div */}
         <div 
           ref={editorRef}
-          className="w-full h-80 bg-gray-900 text-gray-100 p-3 font-mono text-sm rounded whitespace-pre overflow-auto"
+          className="w-full h-60 bg-gray-900 text-gray-100 p-3 font-mono text-sm rounded whitespace-pre overflow-auto"
           dangerouslySetInnerHTML={{ __html: highlightedContent() }}
         />
         {error && (
           <div className="mt-2 text-red-400 text-sm">{error}</div>
         )}
       </div>
-      <div className="mt-4 text-gray-300 text-sm">
-        <h4 className="font-medium mb-1">{t ? t('instructions') : 'Instructions:'}</h4>
-        <ul className="list-disc list-inside pl-2 space-y-1">
-          <li>{t ? t('uncomment_line') : 'Uncomment a line by removing the // at the beginning'}</li>
-          <li>{t ? t('comment_line') : 'Comment out a line by adding // at the beginning'}</li>
-          <li>{t ? t('only_uncommented') : 'Only uncommented parameters will be applied to images'}</li>
-          <li>{t ? t('changes_apply') : 'Changes apply instantly to all product images'}</li>
-        </ul>
-      </div>
     </div>
   );
 }
 
-export default ImageParamsEditor;
+export default HeroParamsEditor;
