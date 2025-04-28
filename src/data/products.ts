@@ -1,3 +1,24 @@
+// Product name translations
+export const productTranslations: { [key: string]: { en: string; ja: string } } = {
+  'Hero Image': { en: 'Hero Image', ja: 'ヒーロー画像' },
+  'Omaha Camera': { en: 'Omaha Camera', ja: 'オマハカメラ' },
+  'Fujifilm Camera': { en: 'Fujifilm Camera', ja: '富士フイルムカメラ' },
+  'Canon Camera': { en: 'Canon Camera', ja: 'キヤノンカメラ' },
+  'Rolleiflex Camera': { en: 'Rolleiflex Camera', ja: 'ローライフレックスカメラ' },
+  'Feather Hat': { en: 'Feather Hat', ja: 'フェザーハット' },
+  'Blue Hat': { en: 'Blue Hat', ja: 'ブルーハット' },
+  'Wicker Hat': { en: 'Wicker Hat', ja: '籐帽子' },
+  'Bucket Hat': { en: 'Bucket Hat', ja: 'バケットハット' },
+  'Basic Sneaker': { en: 'Basic Sneaker', ja: 'ベーシックスニーカー' },
+  'Pink Sneaker': { en: 'Pink Sneaker', ja: 'ピンクスニーカー' },
+  'Basic Running Shoe': { en: 'Basic Running Shoe', ja: 'ランニングシューズ' },
+  'Red Running Shoe': { en: 'Red Running Shoe', ja: 'レッドランニングシューズ' },
+  'Brown Purse': { en: 'Brown Purse', ja: 'ブラウンパース' },
+  'Grey Purse': { en: 'Grey Purse', ja: 'グレーパース' },
+  'Black Purse': { en: 'Black Purse', ja: 'ブラックパース' },
+  'Purple Purse': { en: 'Purple Purse', ja: 'パープルパース' },
+};
+
 export const products = [
   // ヒーロー画像用オブジェクト（新規追加）
   {

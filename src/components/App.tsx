@@ -7,6 +7,8 @@ import {
   UserIcon,
   XMarkIcon
 } from '@heroicons/react/24/outline';
+import { useLanguage } from '../context/LanguageContext';
+import LanguageToggle from './LanguageToggle';
 import Imgix from 'react-imgix';
 import { products } from '../data/products';
 import ProductGrid from './ProductGrid';
@@ -34,6 +36,7 @@ const footerNavigation = {
 
 export default function Example() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { t, language } = useLanguage();
 
   // ヒーロー画像用商品を抽出
   const heroProduct = products.find((product) => product.isHero);
@@ -81,20 +84,22 @@ export default function Example() {
                   {navigation.pages.map((page) => (
                     <div key={page.name} className="flow-root">
                       <a href={page.href} className="-m-2 block p-2 font-medium text-gray-900">
-                        {page.name}
+                        {page.name === 'Home' ? t('home') : 
+                         page.name === 'Docs' ? t('docs') : 
+                         page.name === 'GitHub' ? t('github') : page.name}
                       </a>
                     </div>
                   ))}
                 </div>
                 <div className="space-y-6 border-t border-gray-200 px-4 py-6">
                   <div className="flow-root">
-                    <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                      Create an account
-                    </a>
+                    <div className="p-2 font-medium text-gray-900">
+                      <LanguageToggle />
+                    </div>
                   </div>
                   <div className="flow-root">
                     <a href="#" className="-m-2 block p-2 font-medium text-gray-900">
-                      Sign in
+                      {language === 'en' ? 'Sign in' : 'サインイン'}
                     </a>
                   </div>
                 </div>
@@ -130,20 +135,21 @@ export default function Example() {
                     href="#"
                     className="text-sm font-medium text-gray-300 hover:text-white"
                   >
-                    ホーム
+                    {t('home')}
                   </a>
                   <a
                     href="https://docs.imgix.com/"
                     className="text-sm font-medium text-gray-300 hover:text-white"
                   >
-                    ドキュメント
+                    {t('docs')}
                   </a>
                   <a
                     href="https://github.com/imgix"
                     className="text-sm font-medium text-gray-300 hover:text-white"
                   >
-                    GitHub
+                    {t('github')}
                   </a>
+                  <LanguageToggle />
                 </div>
               </Popover.Group>
             </div>
@@ -164,6 +170,9 @@ export default function Example() {
                 <span className="sr-only">検索</span>
                 <MagnifyingGlassIcon className="h-6 w-6" aria-hidden="true" />
               </a>
+              <div className="ml-2">
+                <LanguageToggle />
+              </div>
             </div>
             {/* モバイルロゴ */}
             <a href="#" className="lg:hidden">
@@ -243,7 +252,7 @@ export default function Example() {
               />
               <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-40">
                 <h1 className="text-4xl text-white font-bold">
-                  Generative Fill AIで新しい画像表現を
+                  {t('hero_title')}
                 </h1>
               </div>
             </section>
@@ -254,15 +263,15 @@ export default function Example() {
                 <section className="bg-white py-16">
                   <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
                     <h1 className="text-4xl font-extrabold text-gray-900 sm:text-5xl lg:text-6xl">
-                      Imgix デモ
+                      {t('imgix_demo')}
                     </h1>
                     <p className="mt-6 max-w-2xl mx-auto text-xl text-gray-700">
-                      Imgix のパワフルな画像最適化技術により、
+                      {t('demo_desc1')}
                       <br className="hidden sm:block" />
-                      あなたのビジュアルコンテンツが劇的に変わります。
+                      {t('demo_desc2')}
                     </p>
                     <p className="mt-4 max-w-2xl mx-auto text-lg text-gray-500">
-                      このデモでは、画像の自動最適化と魅力的なエフェクトがどれほど手軽に実現できるかをご覧いただけます。
+                      {t('demo_desc3')}
                     </p>
                   </div>
                 </section>
@@ -292,24 +301,26 @@ export default function Example() {
               <div className="col-span-6 mt-10 grid grid-cols-2 gap-8 sm:grid-cols-3 md:col-span-8 md:col-start-3 md:row-start-1 md:mt-0 lg:col-span-6 lg:col-start-2">
                 <div className="grid grid-cols-1 gap-y-12 sm:col-span-2 sm:grid-cols-2 sm:gap-x-8">
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">Links</h3>
+                    <h3 className="text-sm font-medium text-gray-900">{t('links')}</h3>
                     <ul role="list" className="mt-6 space-y-6">
                       {footerNavigation.links.map((item) => (
                         <li key={item.name} className="text-sm">
                           <a href={item.href} className="text-gray-500 hover:text-gray-600">
-                            {item.name}
+                            {item.name === 'Docs' ? t('docs') : 
+                             item.name === 'GitHub' ? t('github') : item.name}
                           </a>
                         </li>
                       ))}
                     </ul>
                   </div>
                   <div>
-                    <h3 className="text-sm font-medium text-gray-900">Company</h3>
+                    <h3 className="text-sm font-medium text-gray-900">{t('company')}</h3>
                     <ul role="list" className="mt-6 space-y-6">
                       {footerNavigation.company.map((item) => (
                         <li key={item.name} className="text-sm">
                           <a href={item.href} className="text-gray-500 hover:text-gray-600">
-                            {item.name}
+                            {item.name === 'Who we are' ? t('who_we_are') : 
+                             item.name === 'Press' ? t('press') : item.name}
                           </a>
                         </li>
                       ))}
@@ -317,12 +328,12 @@ export default function Example() {
                   </div>
                 </div>
                 <div>
-                  <h3 className="text-sm font-medium text-gray-900">Get in touch</h3>
+                  <h3 className="text-sm font-medium text-gray-900">{t('get_in_touch')}</h3>
                   <ul role="list" className="mt-6 space-y-6">
                     {footerNavigation.contact.map((item) => (
                       <li key={item.name} className="text-sm">
                         <a href={item.href} className="text-gray-500 hover:text-gray-600">
-                          {item.name}
+                          {t('contact')}
                         </a>
                       </li>
                     ))}
@@ -333,7 +344,7 @@ export default function Example() {
           </div>
           <div className="border-t border-gray-100 py-10 text-center">
             <p className="text-sm text-gray-500">
-              &copy; 2023 Imgix, Inc. All rights reserved.
+              {t('copyright')}
             </p>
           </div>
         </div>
