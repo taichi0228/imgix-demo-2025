@@ -111,7 +111,7 @@ function HeroParamsEditor({ defaultParams, originalCode, onParamsChange }: HeroP
       <div className="relative">
         {/* Hidden textarea that captures user input */}
         <textarea
-          className="w-full h-60 bg-transparent text-transparent caret-white p-3 font-mono text-sm rounded absolute inset-0 z-10 resize-none"
+          className="w-full h-90 bg-transparent text-transparent caret-white p-3 font-mono text-sm rounded absolute inset-0 z-10 resize-none"
           value={editorContent}
           onChange={handleChange}
           onScroll={handleScroll}
@@ -120,7 +120,7 @@ function HeroParamsEditor({ defaultParams, originalCode, onParamsChange }: HeroP
         {/* Highlighted display div */}
         <div 
           ref={editorRef}
-          className="w-full h-60 bg-gray-900 text-gray-100 p-3 font-mono text-sm rounded whitespace-pre overflow-auto"
+          className="w-full h-90 bg-gray-900 text-gray-100 p-3 font-mono text-sm rounded whitespace-pre overflow-auto"
           dangerouslySetInnerHTML={{ __html: highlightedContent() }}
         />
         {error && (
